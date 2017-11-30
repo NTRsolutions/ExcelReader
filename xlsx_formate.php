@@ -4,13 +4,24 @@ $objPHPExcel->setActiveSheetIndex(0);
 $objPHPExcel->getActiveSheet()->mergeCells('A'.$CellCount.':I'.$CellCount);
 
 $objPHPExcel->getActiveSheet()->setCellValue('A'.$CellCount,$Company);
-$objPHPExcel->getActiveSheet()
-            ->getStyle('A'.$CellCount.':I'.$CellCount)
-            ->getFill()
-            ->setFillType(PHPExcel_Style_Fill::FILL_SOLID)
-            ->getStartColor()
-            ->setARGB('FF808080');
+//$objPHPExcel->getActiveSheet()
+//            ->getStyle('A'.$CellCount.':I'.$CellCount)
+//            ->getFill()
+//            ->setFillType(PHPExcel_Style_Fill::FILL_SOLID)
+//            ->getStartColor()
+//            ->setARGB('FF808080');
 
+
+$styleArray = array(
+	'font'  => array(
+		'bold'  => true,
+		'color' => array('argb' => 'FF808080'),
+		'size'  => 15,
+		'name'  => 'Verdana'
+	));
+$objPHPExcel->getActiveSheet()
+			->getStyle('A'.$CellCount.':I'.$CellCount)
+            ->applyFromArray($styleArray);
 $CellCount++;
 $objPHPExcel->getActiveSheet()->SetCellValue('A'.$CellCount, 'Month');
 $objPHPExcel->getActiveSheet()->SetCellValue('B'.$CellCount, 'SumInvoice Subtotal (2016)');

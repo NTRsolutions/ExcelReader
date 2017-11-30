@@ -77,7 +77,8 @@ class MyReadFilter implements PHPExcel_Reader_IReadFilter
 	}
 }
 
-$filename = "xlsxFiles/comparsion_10-23-2017_short.xlsx";
+//$filename = "xlsxFiles/comparsion_10-23-2017_short.xlsx";
+$filename = $conversionFile;
 //$filename = "xlsxFiles/comparsion_10-23-2017_main.xlsx";
 $myfile = fopen("SaveHtml.html", "w") or die("Unable to open file!");
 
@@ -157,9 +158,9 @@ foreach($mainArray as $key => $value){
 	{
 
 		include('sumrize_data_loop.php');
-		//include('xlsx_formate.php');
-		include('html_formate.php');
-		include('html_convert.php');
+		include('xlsx_formate.php');
+		//include('html_formate.php');
+		//include('html_convert.php');
 
 
 
@@ -179,9 +180,10 @@ foreach($mainArray as $key => $value){
 }
 fclose($myfile);
 //Instanciation of inherited class
-echo date('H:i:s') . " Write to Excel2007 format\n";
+//echo date('H:i:s') . " Write to Excel2007 format\n";
 $objWriter = new PHPExcel_Writer_Excel2007($objPHPExcel);
 $objWriter->save(str_replace('.php', '.xlsx', __FILE__));
 // Echo done
-echo date('H:i:s') . " Done writing file.\r\n";
+//echo date('H:i:s') . " Done writing file.\r\n";
+
 
